@@ -8,11 +8,14 @@ public class Root : MonoBehaviour
     [SerializeField] private CameraControl _switcher;
     [SerializeField] private Button _startButton;
     [SerializeField] private Timer _timer;
+    [SerializeField] private FinishTrigger _finishTrigger;
+
+    private IPlayerInput _playerInput;
 
     [Header("Debug")]
     [SerializeField] private Button _button;
+    private int _index = 0;
 
-    private IPlayerInput _playerInput;
 
     private void Start()
     {
@@ -22,6 +25,7 @@ public class Root : MonoBehaviour
         _timer.TimerEnded += OnStartTimerEnded;
         _button.onClick.AddListener(OnButtonClick);
         _startButton.onClick.AddListener(OnStartButtonClick);
+        _finishTrigger.RingCompleted += OnRingCompleted;
     }
 
     private void OnDestroy()
@@ -29,6 +33,12 @@ public class Root : MonoBehaviour
         _timer.TimerEnded -= OnStartTimerEnded;
         _button.onClick.RemoveListener(OnButtonClick);
         _startButton.onClick.RemoveListener(OnStartButtonClick);
+        _finishTrigger.RingCompleted -= OnRingCompleted;
+    }
+
+    private void OnRingCompleted()
+    {
+        Debug.Log($"Rings complete: {++_index}");
     }
 
     private void OnStartTimerEnded()
@@ -46,36 +56,5 @@ public class Root : MonoBehaviour
     private void OnButtonClick()
     {
         _switcher.Switch();
-    }
-}
-
-public interface IPlayerInput
-{
-    public float GetVerticalAxis(); 
-
-    public float GetHorizontalAxis(); 
-
-    public float GetJump(); 
-}
-
-public class OldInputProvider : IPlayerInput
-{
-    private const string Vertical = nameof(Vertical);
-    private const string Horizontal = nameof(Horizontal);
-    private const string Jump = nameof(Jump);
-
-    public float GetHorizontalAxis()
-    {
-        return Input.GetAxis(Horizontal);
-    }
-
-    public float GetJump()
-    {
-        return Input.GetAxis(Jump);
-    }
-
-    public float GetVerticalAxis()
-    {
-        return Input.GetAxis(Vertical);
     }
 }
