@@ -36,6 +36,6 @@ public class Timer : MonoBehaviour
             yield return delay;
         }
 
-        _text.gameObject.SetActive(false);
+        _text.alpha = 0f;
     }
 }

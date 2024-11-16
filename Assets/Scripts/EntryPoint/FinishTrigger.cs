@@ -8,18 +8,13 @@ public class FinishTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Player player))
-        {
-            player.BecameWinnable(false);
-            //gameObject.SetActive(false);
-        }
+        if (other.TryGetComponent(out Player player))        
+            player.SetCanWin(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player player) && player.CanWin)
-        {
-            RingCompleted?.Invoke();
-        }
+            RingCompleted?.Invoke();        
     }
 }

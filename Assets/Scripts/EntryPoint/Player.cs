@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 
     public bool CanWin => _canWin;
 
-    public void BecameWinnable(bool value)
+    public void SetCanWin(bool value)
     {
         _canWin = value;
     }

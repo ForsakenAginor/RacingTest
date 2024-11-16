@@ -8,18 +8,12 @@ public class StartTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if(other.TryGetComponent(out Player player))
-        {
-            player.BecameWinnable(true);
-            //_finish.gameObject.SetActive(true);
-        }
+            player.SetCanWin(true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player player))
-        {
-            player.BecameWinnable(false);
-            //_finish.gameObject.SetActive(false);
-        }
+            player.SetCanWin(false);        
     }
 }
