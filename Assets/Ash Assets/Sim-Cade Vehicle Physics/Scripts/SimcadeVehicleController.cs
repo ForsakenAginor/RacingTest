@@ -93,6 +93,12 @@ namespace Ashsvp
         public float[] forwardSlip = new float[4], slipCoeff = new float[4], skidTotal = new float[4];
         private WheelSkid[] wheelSkids = new WheelSkid[4];
 
+        [Header("On/Off system")]
+        private bool _isWorking = false;
+
+        [Header("Input")]
+        private IPlayerInput _playerInput;
+
 
         void Awake()
         {
@@ -131,17 +137,20 @@ namespace Ashsvp
 
         private void Update()
         {
+            if (_isWorking == false)
+                return;
+
             if (CanDrive && CanAccelerate)
             {
-                accelerationInput = Input.GetAxis("Vertical");
-                steerInput = Input.GetAxis("Horizontal");
-                brakeInput = Input.GetAxis("Jump");
+                accelerationInput = _playerInput.GetVerticalAxis(); // Input.GetAxis("Vertical");
+                steerInput = _playerInput.GetHorizontalAxis(); //Input.GetAxis("Horizontal");
+                brakeInput = _playerInput.GetJump(); //Input.GetAxis("Jump");
             }
             else if(CanDrive && !CanAccelerate)
             {
                 accelerationInput = 0;
-                steerInput = Input.GetAxis("Horizontal");
-                brakeInput = Input.GetAxis("Jump");
+                steerInput = _playerInput.GetHorizontalAxis(); // Input.GetAxis("Horizontal");
+                brakeInput = _playerInput.GetJump(); //Input.GetAxis("Jump");
             }
             else
             {
@@ -235,6 +244,16 @@ namespace Ashsvp
                 GroundedProperty = vehicleIsGrounded;
             }
 
+        }
+
+        public void Init(IPlayerInput input)
+        {
+            _playerInput = input != null ? input : throw new ArgumentNullException(nameof(input));
+        }
+
+        public void StartWorking()
+        {
+            _isWorking = true;
         }
 
         void AddAcceleration(float accelerationInput)
