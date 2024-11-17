@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9eb6823fafaa5469c4b2822c9ce663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startDelay: 3
+  _startDelay: 10
   _step: 1
   _text: {fileID: 496338621}
 --- !u!114 &49131290
@@ -2225,12 +2225,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191855248}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 85.6, y: 4.1, z: 385.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1417783375}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -180}
 --- !u!1001 &197948916
 PrefabInstance:
@@ -5309,7 +5309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1417783375}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 110}
 --- !u!4 &440883556 stripped
 Transform:
@@ -15565,6 +15565,10 @@ Transform:
   - {fileID: 57979888}
   - {fileID: 1953816338}
   - {fileID: 1895056921}
+  - {fileID: 2117638605}
+  - {fileID: 191855251}
+  - {fileID: 437672040}
+  - {fileID: 2010112871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1420601900
@@ -22985,7 +22989,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1417783375}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 30}
 --- !u!1001 &2015120348
 PrefabInstance:
@@ -25000,7 +25004,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1417783375}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -80}
 --- !u!1001 &2136838578
 PrefabInstance:
@@ -26620,13 +26624,9 @@ SceneRoots:
   - {fileID: 1012675643}
   - {fileID: 1417783375}
   - {fileID: 1921023648}
+  - {fileID: 2015120348}
   - {fileID: 1874585056}
   - {fileID: 1435424250}
   - {fileID: 11365299}
   - {fileID: 1963787045}
   - {fileID: 49131288}
-  - {fileID: 2015120348}
-  - {fileID: 2117638605}
-  - {fileID: 191855251}
-  - {fileID: 437672040}
-  - {fileID: 2010112871}
