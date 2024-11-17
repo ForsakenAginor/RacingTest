@@ -15,6 +15,10 @@ public class CarRecorder : MonoBehaviour
         _data.Enqueue(new KeyValuePair<Vector3, Quaternion>(_car.position, _car.rotation));
     }
 
+    /// <summary>
+    /// Start recording new data
+    /// </summary>
+    /// <param name="oldData">Data, that was recorded from past call StartRecording method</param>
     public void StartRecording(out Queue<KeyValuePair<Vector3, Quaternion>> oldData)
     {
         _isWorking = true;
