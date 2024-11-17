@@ -9,6 +9,7 @@ public class Root : MonoBehaviour
     [Header("PlayerCar")]
     [SerializeField] private SimcadeVehicleController _vehicleController;
     private IPlayerInput _playerInput;
+    private InputActions _actions;
 
     [Header("Start race logic")]
     [SerializeField] private CameraControl _switcher;
@@ -25,7 +26,9 @@ public class Root : MonoBehaviour
 
     private void Start()
     {
-        _playerInput = new OldInputProvider();
+        _actions = new InputActions();
+        _actions.Enable();
+        _playerInput = new NewInputProvider(_actions);
         _vehicleController.Init(_playerInput);
 
         RoundCounter roundCounter = new RoundCounter(_finishTrigger);
@@ -41,6 +44,7 @@ public class Root : MonoBehaviour
         _timer.TimerEnded -= OnStartTimerEnded;
         _startButton.onClick.RemoveListener(OnStartButtonClick);
         _finishTrigger.RingCompleted -= OnRingCompleted;
+        _actions.Dispose();
     }
 
     private void OnRingCompleted()
